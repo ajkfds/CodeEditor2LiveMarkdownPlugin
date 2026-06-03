@@ -1,2 +1,1 @@
-# CodeEditor2LiveMarkdownPlugin
-CodeEditor2 LiveMarkdown Plugin
+# CodeEditor2MarkdownPlugin
