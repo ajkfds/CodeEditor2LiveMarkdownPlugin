@@ -1,24 +1,15 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 namespace CodeEditor2LiveMarkdownPlugin
 {
+    // Legacy stub: this project is a CodeEditor2 plugin library.
+    // The host application registers LiveMarkdown styles in its own App.axaml.
     public partial class App : Application
     {
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
-        }
-
-        public override void OnFrameworkInitializationCompleted()
-        {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                desktop.MainWindow = new MainWindow();
-            }
-
-            base.OnFrameworkInitializationCompleted();
         }
     }
 }

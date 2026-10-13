@@ -1,13 +1,14 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CodeEditor2LiveMarkdownPlugin;
-
-public partial class PreviewWindow : UserControl
+namespace CodeEditor2LiveMarkdownPlugin
 {
-    public PreviewWindow()
+    // Legacy stub: this project is a CodeEditor2 plugin library.
+    public partial class PreviewWindow : Window
     {
-        InitializeComponent();
+        public PreviewWindow()
+        {
+            InitializeComponent();
+        }
     }
 }

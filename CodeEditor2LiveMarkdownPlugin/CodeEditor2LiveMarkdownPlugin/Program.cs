@@ -1,25 +1,2 @@
-﻿using Avalonia;
-using System;
-
-namespace CodeEditor2LiveMarkdownPlugin
-{
-    internal class Program
-    {
-        // Initialization code. Don't use any Avalonia, third-party APIs or any
-        // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-        // yet and stuff might break.
-        [STAThread]
-        public static void Main(string[] args) => BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
-
-        // Avalonia configuration, don't remove; also used by visual designer.
-        public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
-                .UsePlatformDetect()
-#if DEBUG
-                .WithDeveloperTools()
-#endif
-                .WithInterFont()
-                .LogToTrace();
-    }
-}
+// This project is now a CodeEditor2 plugin library (not a standalone app).
+// See Plugin.cs / FileTypes / Data / Views.
