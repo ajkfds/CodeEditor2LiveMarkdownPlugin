@@ -10,7 +10,7 @@ namespace pluginLiveMarkdown
     {
         public bool Register()
         {
-            // register filetype (live markdown file: .lmd)
+            // register filetype (live markdown file: .md)
             FileTypes.LiveMarkdownFile fileType = new FileTypes.LiveMarkdownFile();
             CodeEditor2.Global.FileTypes.Add(fileType.ID, fileType);
             return true;

@@ -14,7 +14,7 @@ namespace pluginLiveMarkdown.FileTypes
         public override bool IsThisFileType(string relativeFilePath, CodeEditor2.Data.Project project)
         {
             if (
-                relativeFilePath.ToLower().EndsWith(".lmd")
+                relativeFilePath.ToLower().EndsWith(".md")
             )
             {
                 return true;
