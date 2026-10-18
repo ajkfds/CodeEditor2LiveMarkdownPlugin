@@ -73,6 +73,27 @@ namespace pluginLiveMarkdown.Data
             );
         }
 
-        public Views.PreviewControl PreviewControl { get; } = new Views.PreviewControl();
+        // The preview control is an Avalonia control and must be created on the
+        // UI thread. File creation runs on a background thread (see
+        // Folder.CreateFileAsync), so building the control in a field initializer
+        // would bind it to the wrong dispatcher and cause
+        // "The calling thread cannot access this object" exceptions later.
+        // Create it lazily on first (UI thread) access instead.
+        private Views.PreviewControl? previewControl = null;
+        public Views.PreviewControl PreviewControl
+        {
+            get
+            {
+                if (previewControl == null)
+                {
+                    if (!Dispatcher.UIThread.CheckAccess())
+                    {
+                        return Dispatcher.UIThread.Invoke(() => PreviewControl);
+                    }
+                    previewControl = new Views.PreviewControl();
+                }
+                return previewControl;
+            }
+        }
     }
 }
