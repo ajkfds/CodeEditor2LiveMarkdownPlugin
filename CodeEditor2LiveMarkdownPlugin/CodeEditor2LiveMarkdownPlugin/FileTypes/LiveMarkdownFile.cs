@@ -9,7 +9,7 @@ namespace pluginLiveMarkdown.FileTypes
 {
     public class LiveMarkdownFile : CodeEditor2.FileTypes.FileType
     {
-        public override string ID { get => "LiveMarkdownFile"; }
+        public override string ID { get => "MarkdownFile"; }
 
         public override bool IsThisFileType(string relativeFilePath, CodeEditor2.Data.Project project)
         {
