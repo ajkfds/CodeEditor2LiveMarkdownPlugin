@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Styling;
 using Avalonia.Threading;
 using System;
 using System.Threading.Tasks;
@@ -21,6 +23,26 @@ public partial class PreviewControl : UserControl
         FontFamily = new Avalonia.Media.FontFamily("Cascadia Mono,Consolas,Menlo,Monospace,DejaVu Sans Mono,Liberation Mono,Noto Sans Mono,Source Code Pro"),
     };
 
+    // The markdown renderer draws text with the theme foreground color. The main
+    // application runs with RequestedThemeVariant="Dark", so a plain white
+    // background would leave the text white (invisible). Wrap the control in a
+    // ThemeVariantScope bound to the Light theme variant so the markdown content
+    // is rendered with dark text on the white background.
+    private ThemeVariantScope markdownScope = new ThemeVariantScope()
+    {
+        RequestedThemeVariant = ThemeVariant.Light,
+        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+        VerticalAlignment = Avalonia.Layout.VerticalAlignment.Stretch,
+    };
+
+    // White background host for the preview.
+    private Border backgroundBorder = new Border()
+    {
+        Background = new SolidColorBrush(Colors.White),
+        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+        VerticalAlignment = Avalonia.Layout.VerticalAlignment.Stretch,
+    };
+
     private CodeEditor2.Data.TextFile? targetFile = null;
     private ulong lastVersion = 0;
     private bool initialized = false;
@@ -30,7 +52,9 @@ public partial class PreviewControl : UserControl
         base.OnInitialized();
         if (Content == null)
         {
-            Content = markdown;
+            markdownScope.Child = markdown;
+            backgroundBorder.Child = markdownScope;
+            Content = backgroundBorder;
         }
         initialized = true;
     }
