@@ -34,10 +34,7 @@ namespace pluginLiveMarkdown.Data
             return fileItem;
         }
 
-        protected override CodeEditor2.NavigatePanel.NavigatePanelNode CreateNode()
-        {
-            return new NavigatePanel.LiveMarkdownFileNode(this);
-        }
+
 
         // live update: entry parse on edit triggers preview update
         public override DocumentParser CreateDocumentParser(DocumentParser.ParseModeEnum parseMode, System.Threading.CancellationToken? token)
